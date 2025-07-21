@@ -1,0 +1,27 @@
+import CTA from "~/blocks/home/CTA";
+import FeatureGames from "~/blocks/home/FeatureGames";
+import News from "~/blocks/home/News";
+import Slider from "~/blocks/home/Slider";
+import { Helper } from "~/utils/helper";
+import Lang from "../lang/lang";
+import type { Route } from "./+types/Home";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: Lang.title + " | " + Lang.home },
+    { name: "description", content: Lang.welcome_fx + " - " + Lang.home },
+  ];
+}
+
+export default function Home() {
+  const { gameSections } = new Helper();
+  return (
+    <div>
+      <Slider /> 
+     <FeatureGames/>
+    <News />
+    <CTA/>
+      
+    </div>
+  );
+}

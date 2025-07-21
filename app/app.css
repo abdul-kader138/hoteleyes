@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'BW Modelica';
+  src: url('/fonts/bw/BwModelica-Medium.otf') format('opentype'),
+       url('/fonts/bw/BwModelica-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html,
+body {
+  background-color: #031F50; /* Background color as per the design */
+  color: white;
+  font-family: "BW Modelica", sans-serif !important;
+}
+
+.box {
+  max-width: 1600px;
+  margin: 0 auto;         
+  border-radius: 8px;      
+  /* optional rounded corners */
+}
+
+/* Ensure content inside header, footer, and main sections stays aligned */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px; /* Adjust for spacing */
+  padding-right: 5px; /* Adjust for spacing */
+}
+
+.simplebar-scrollbar::before {
+  background-color: white !important;
+}
+
+.simplebar-track.simplebar-vertical {
+  background: transparent; /* Optional: scrollbar track */
+  width: 2px;
+}
+
+.simplebar-track.simplebar-horizontal {
+  background: transparent;
+  height: 2px;
+}
+
+@layer utilities {
+  @keyframes slide-progress {
+    from {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    to {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  .animate-slide-progress {
+    animation: slide-progress 4s linear forwards;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+}
+
+
+/* For large screens, make the header and footer elements spaced properly */
+@media screen and (min-width: 768px) {
+   nav {
+    padding: 15px 30px 15px 40px;
+  }
+}
+
+
+/* Full screen height adjustment */
+@media (max-width: 768px) {
+  body {
+    height: 100%;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
