@@ -63,15 +63,22 @@ const Lang = {
 
   // contact section
   name_validation: "Name is required",
-  email_validation: "Invalid email",
+  first_name_validation: "First Name is required",
+  last_name_validation: "Last Name is required",
+  email_validation: "Please enter a valid email address",
   subject_validation: "Subject is required",
   message_validation: "Message must be at least 10 characters",
   contact_success_message: "Data sent successfully!",
   submission_failed: "Submission failed",
+  password_required: "Please enter a valid password",
+  password_validation: "Expected string to have >=6 characters",
   name: "Name",
   subject: "Subject",
   message: "Message",
   send_message: " Send Message",
+
+  // common
+  data_saved:"Data save successfully.",
 
   //footer
   join_us: "Join our community!",

@@ -1,123 +1,144 @@
-import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import {
   FaFacebook,
-  FaGithub,
   FaGoogle,
-  FaSpinner,
-  FaSteam,
+  FaSpinner
 } from "react-icons/fa";
+import { z } from "zod";
 import Lang from "~/lang/lang";
 import { Helper } from "~/utils/helper";
 
+const registerSchema = z.object({
+  firstName: z.string().min(2, Lang.first_name_validation),
+  lastName: z.string().min(2, Lang.last_name_validation),
+  email: z.string().email(Lang.email_validation),
+  password: z.string().min(6, Lang.password_validation),
+});
+
+type RegisterFormData = z.infer<typeof registerSchema>;
+
 export default function Register() {
-  const { validateEmail, BASE_API } = new Helper();
+  const { BASE_API } = new Helper();
 
-  const [error, setError] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    },
+  });
 
-  const handleSubmit = async () => {
-    setError("");
-    if (!firstName || !lastName || !email || !password) {
-      setError(Lang.invalid_fields);
-      return;
-    }
-    if (!validateEmail(email)) {
-      setError(Lang.invalid_email);
-      return;
-    }
-
-    setLoading(true);
+  const onSubmit = async (formData: RegisterFormData) => {
     try {
       const response = await fetch(`${BASE_API}/auth/register`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ first_name:firstName, last_name:lastName, email, password }),
+        body: JSON.stringify({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+        }),
       });
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "Registration failed");
-      sessionStorage.setItem("success_message", Lang.register_success);
+
+      sessionStorage.setItem("success_message", Lang.data_saved);
       window.location.href = "/login";
     } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+      toast.error(err.message);
     }
   };
 
   return (
-    <div className="flex items-center justify-center p-4">
-      <div className="bg-gray-800 rounded-lg shadow-xl p-10 w-full max-w-4xl">
+   <div className="min-h-screen flex items-center justify-center px-2">
+      <Toaster position="top-right" />
+    <div className="bg-gray-800 w-full max-w-2xl rounded-2xl shadow-2xl p-8 sm:p-12 lg:p-16">
         <div className="text-center mb-6">
-          <a href="/"><img
-            src="/images/logos/logo.svg"
-            alt="Logo"
-            className="mx-auto h-9 w-auto"
-          /></a>
-          {error && (
-            <p className="text-red-500 text-sm text-center mt-2">{error}</p>
-          )}
+          <a href="/">
+            <img
+              src="/images/logos/logo.svg"
+              alt="Logo"
+              className="mx-auto h-9 w-auto"
+            />
+          </a>
         </div>
 
-
-        <form className="pt-5">
-          {/* First Name & Last Name Side by Side */}
-          <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder={Lang.first_name}
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="w-full p-3 bg-gray-700 text-white text-sm rounded-full outline-none border border-gray-600 focus:border-[#D90479]"
-              required
-            />
-            <input
-              type="text"
-              placeholder={Lang.last_name}
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="w-full p-3 bg-gray-700 text-white text-sm rounded-full outline-none border border-gray-600 focus:border-[#D90479]"
-              required
-            />
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <div className="mb-6">
+              <input
+                type="text"
+                placeholder={Lang.first_name}
+                {...register("firstName")}
+                value={watch("firstName")}
+                onChange={(e) => setValue("firstName", e.target.value)}
+                   className="w-full p-3 bg-gray-700 rounded-full text-sm text-white border border-gray-600 outline-none focus:border-[#D90479]"
+         />
+              {errors.firstName && (
+                <p className="text-red-500 px-2 py-0.5 text-sm">{errors.firstName.message}</p>
+              )}
+          </div>
+           <div className="mb-6">
+              <input
+                type="text"
+                placeholder={Lang.last_name}
+                {...register("lastName")}
+                value={watch("lastName")}
+                onChange={(e) => setValue("lastName", e.target.value)}
+                className="w-full p-3 bg-gray-700 text-white text-sm rounded-full outline-none border border-gray-600 focus:border-[#D90479]"
+              />
+              {errors.lastName && (
+               <p className="text-red-500 px-2 py-0.5 text-sm">{errors.lastName.message}</p>
+              )}
           </div>
 
-          {/* Email */}
-          <div className="mb-4">
+          <div className="mb-6">
             <input
-              type="email"
+              type="text"
               placeholder={Lang.email}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email")}
+              value={watch("email")}
+              onChange={(e) => setValue("email", e.target.value)}
               className="w-full p-3 bg-gray-700 text-white text-sm rounded-full outline-none border border-gray-600 focus:border-[#D90479]"
-              required
             />
+            {errors.email && (
+              <p className="text-red-500 px-2 py-0.5 text-sm">{errors.email.message}</p>
+            )}
           </div>
 
-          {/* Password */}
           <div className="mb-6">
             <input
               type="password"
               placeholder={Lang.password}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              {...register("password")}
+              value={watch("password")}
+              onChange={(e) => setValue("password", e.target.value)}
               className="w-full p-3 bg-gray-700 text-white text-sm rounded-full outline-none border border-gray-600 focus:border-[#D90479]"
-              required
             />
+            {errors.password && (
+              <p className="text-red-500 px-2 py-0.5 text-sm">{errors.password.message}</p>
+            )}
           </div>
 
-          {/* Register Button */}
           <button
-            type="button"
-            onClick={handleSubmit}
+            type="submit"
+            disabled={isSubmitting}
             className="w-full py-3 text-sm bg-[#D90479] hover:scale-[1.05] text-white font-semibold rounded-full cursor-pointer mb-6 flex items-center justify-center"
-            disabled={loading}
           >
-            {loading ? (
+            {isSubmitting ? (
               <FaSpinner className="animate-spin text-xl" />
             ) : (
               Lang.sign_up_image
@@ -125,23 +146,15 @@ export default function Register() {
           </button>
         </form>
 
-        {/* Social Login Icons */}
         <div className="flex justify-center gap-4 mb-6">
           <a href={`${BASE_API}/auth/facebook`} title="Login with Facebook">
             <FaFacebook className="text-gray-300 text-xl cursor-pointer hover:scale-110 transition" />
           </a>
-          <a href={`${BASE_API}/auth/steam`} title="Login with Steam">
-            <FaSteam className="text-gray-300 text-xl cursor-pointer hover:scale-110 transition" />
-          </a>
           <a href={`${BASE_API}/auth/google`} title="Login with Google">
             <FaGoogle className="text-gray-300 text-xl cursor-pointer hover:scale-110 transition" />
           </a>
-          <a href={`${BASE_API}/auth/github`} title="Login with GitHub">
-            <FaGithub className="text-gray-300 text-xl cursor-pointer hover:scale-110 transition" />
-          </a>
         </div>
 
-        {/* Already have account */}
         <div className="text-center mt-4">
           <p className="text-gray-400 text-sm">
             {Lang.already_account + " "}
