@@ -17,6 +17,7 @@ type Params = {
   "/profile": {};
   "/dashboard": {};
   "/about": {};
+  "/contact": {};
   "/games": {};
   "/game/1": {};
   "/blogs/:articleId": {

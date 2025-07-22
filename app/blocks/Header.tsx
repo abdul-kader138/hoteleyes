@@ -23,9 +23,14 @@ export function Header() {
         </div>
 
         {/* Desktop Header (original design untouched) */}
-        <div className="hidden md:block box w-full">{<><TopMenuBar /></>} </div>
+        <div className="hidden md:block box w-full">
+          {
+            <>
+              <TopMenuBar />
+            </>
+          }{" "}
+        </div>
       </header>
-     
     </>
   );
 }

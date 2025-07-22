@@ -22,8 +22,7 @@ export default function EditProfile() {
   const [loading, setLoading] = useState(false); // State to handle form submission loading
   const [isLoadingImage, setIsLoadingImage] = useState(false); // State to handle image upload loading
   const [error, setError] = useState(""); // State for form validation errors
-  const { BASE_API, validateTextLength, validateEmail, handleClickRedirect } =
-    new Helper(); // Helper instance for API calls and validations
+  const { BASE_API, validateTextLength, validateEmail } = new Helper(); // Helper instance for API calls and validations
 
   // Form fields
   const [firstName, setFirstName] = useState("");
@@ -192,9 +191,7 @@ export default function EditProfile() {
   return (
     <div className="bg-gradient-to-br  min-h-screen text-white">
       {/* Profile Header */}
-      <div
-        className="relative w-full text-left p-6 md:p-6 z-10"
-      >
+      <div className="relative w-full text-left p-6 md:p-6 z-10">
         <div className="max-w-4xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center">
           {/* Left - User Info */}
           <div className="flex flex-col md:flex-row items-center space-x-0 md:space-x-4 text-center md:text-left">
@@ -240,9 +237,7 @@ export default function EditProfile() {
           <div className="mt-4 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-white text-sm">
-                  {Lang.first_name}
-                </label>
+                <label className="text-white text-sm">{Lang.first_name}</label>
                 <input
                   type="text"
                   onChange={(e) => setFirstName(e.target.value)}
@@ -251,9 +246,7 @@ export default function EditProfile() {
                 />
               </div>
               <div>
-                <label className="text-white text-sm">
-                  {Lang.last_name}
-                </label>
+                <label className="text-white text-sm">{Lang.last_name}</label>
                 <input
                   type="text"
                   onChange={(e) => setLastName(e.target.value)}

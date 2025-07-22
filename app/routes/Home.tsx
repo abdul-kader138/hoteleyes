@@ -1,7 +1,7 @@
 import CTA from "~/blocks/home/CTA";
 import FeatureGames from "~/blocks/home/FeatureGames";
+import HeroSection from "~/blocks/home/HeroSection";
 import News from "~/blocks/home/News";
-import Slider from "~/blocks/home/Slider";
 import { Helper } from "~/utils/helper";
 import Lang from "../lang/lang";
 import type { Route } from "./+types/Home";
@@ -17,11 +17,10 @@ export default function Home() {
   const { gameSections } = new Helper();
   return (
     <div>
-      <Slider /> 
-     <FeatureGames/>
-    <News />
-    <CTA/>
-      
+      <HeroSection />
+      <FeatureGames />
+      <News />
+      <CTA />
     </div>
   );
 }

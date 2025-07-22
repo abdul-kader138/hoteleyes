@@ -54,9 +54,7 @@ export default function Article() {
   if (error || !article) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen text-white">
-        <h2 className="text-xl font-bold text-red-500">
-          {Lang.no_data_found}
-        </h2>
+        <h2 className="text-xl font-bold text-red-500">{Lang.no_data_found}</h2>
         <button
           className="mt-4 bg-gray-700 text-[#D90479] cursor-pointer px-4 py-2 rounded-lg hover:bg-gray-600"
           onClick={() => navigate("/school")}
@@ -120,7 +118,7 @@ export default function Article() {
         {/* 🎥 Video Section - Only Show if Video Exists */}
         {article.video_url && (
           <div className="mt-6">
-            <h3 className="text-lg font-semibold mb-2">Watch Video:</h3>
+            <h3 className="text-lg font-semibold mb-2">{Lang.watch_video}</h3>
             <div className="relative w-full h-64 md:h-96">
               {/* Detect YouTube or Vimeo */}
               {article.video_url.includes("youtube.com") ||

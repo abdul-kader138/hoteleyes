@@ -17,6 +17,7 @@ export default [
     route("profile", "routes/users/EditProfile.tsx"),
     route("dashboard", "routes/Dashboard.tsx"),
     route("about", "routes/About.tsx"),
+    route("contact", "routes/Contact.tsx"),
     route("games", "routes/Games.tsx"),
     route("game/1", "blocks/games/Game.tsx"),
     route("blogs/:articleId", "blocks/home/Article.tsx"),

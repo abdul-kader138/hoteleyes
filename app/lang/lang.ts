@@ -3,26 +3,28 @@ const Lang = {
   title: "Ororo",
   search: "Search  ",
   logo: "Logo",
-  install: "Install",
   user: "User",
-  open_main_menu: "Open main menu",
 
   //navbar
   games: "Games",
   about: "About",
   news: "News",
   contact: "Contact",
+  contact_details: "WE ARE HERE TO HELP YOU",
 
-
-  //homw
-  CTA_header:"Start Your Journey with Us Today!",
-  CTA_content:" Join countless players on thrilling adventures across our universe of games.",
-  blog_not_found:"Blog not found.",
-  blog:"Blog",
-  published:"Published",
-  summary:"Summary",
-  invalid_video:"Invalid Video",
+  //home
+  CTA_header: "Start Your Journey with Us Today!",
+  CTA_content:
+    " Join countless players on thrilling adventures across our universe of games.",
+  blog_not_found: "Blog not found.",
+  blog: "Blog",
+  watch_video: "Watch Video:",
+  published: "Published",
+  summary: "Summary",
+  invalid_video: "Invalid Video",
   feature_games: "Featured Games",
+  see_less: "See Less",
+  see_all: "See All",
   open: "OPEN",
   red_rum: "RedRum",
   red_rum_year: "July 29, 2023",
@@ -37,43 +39,39 @@ const Lang = {
   steel_saviour_details:
     "An old-school shooter set several years after a global war that brought humanity to the brink of extinction due to lack of water.",
 
+  // about
+  profile_name: "Valli Fragoso",
+  linkedin_profile: "https://www.linkedin.com/in/vallifragoso/",
+  founded_by: "Founded by",
+  who_we_are: "Who We Are",
+  our_vision: "Our Vision",
+  award_recognition: "Awards & Recognition",
+  wwr_moto: "“Innovating Fun, Delivering Excellence.”",
+  wwr_content:
+    ", a visionary passionate about gaming and digital innovation. We're a bold new force in the gaming world — crafting immersive experiences designed to entertain, challenge, and inspire players around the globe.",
+  vision_content:
+    "We aim to be a global leader in interactive entertainment, setting new standards in storytelling, game mechanics, and player engagement. Our future is about pushing creative boundaries — connecting millions through unforgettable experiences that shape the future of play.",
+
+  // games
+  search_game: "Search game",
+  load_more: "Load More",
+  game_info: "Game Info",
+  game_type: "Game Type",
+  features: "Features",
+  categories: "Categories",
+  sort_by: "Sort by",
 
   // contact section
-
-  join_community: "Join the community",
-  join_community_content:
-    "Become part of the Ororo Web universe: join our Discord server and connect with players and fans.",
-  open_discord: "Open Discord",
-  open_discord_content:
-    "💬 Connect with players, give feedback, and stay updated",
-  contact_us: "CONTACT US",
-  contact_us_content: " 🚀 Shaping worlds, one pixel at a time.",
-  what_we_do: "What we do ?",
-  what_we_do_details:
-    " From concept to launch, we craft immersive experiences built for players who crave something different.",
-
-  // news section
-  commodore_industries:
-    "Commodore Industries at Made in Italy Day: Innovation, Identity and Vision",
-  commodore_industries_year: "April 11, 2025",
-  commodore_industries_details:
-    "Invited to tell their story, made of passion for technology, continuous research and strong roots in the values ​​of Italian identity ....",
-  significant_progress:
-    "Significant progress in the development of our first laptop powered by qualcomm snapdragon X elite",
-  significant_progress_year: "November 15, 2024",
-  significant_progress_details:
-    "The initial testing phase has delivered highly encouraging results, demonstrated exceptional performance in both speed and energy efficiency ....",
-  commodore_reviews: "Commodore Revives a Legend: Xenon Returns!",
-  commodore_reviews_date: "September 28, 2024",
-  commodore_reviews_details:
-    "We are thrilled to announce that Commodore has acquired the license to work on a legendary title: Xenon! A cult game for all Amiga 500 owners, Xenon left an indelible mark in the ....",
-
-  //questions
-  question: "Question",
-  faq: "Frequently Asked Questions",
-  faq_content:
-    " In this section, you'll find everything you need to know about Ororo Web — from how to get started, to game support, purchases, and platform features. Whether you're a first-time player or a returning explorer, we're here to help you make the most of your Ororo Web experience.",
-  have_question: "Have questions? We’ve got answers.",
+  name_validation: "Name is required",
+  email_validation: "Invalid email",
+  subject_validation: "Subject is required",
+  message_validation: "Message must be at least 10 characters",
+  contact_success_message: "Data sent successfully!",
+  submission_failed: "Submission failed",
+  name: "Name",
+  subject: "Subject",
+  message: "Message",
+  send_message: " Send Message",
 
   //footer
   join_us: "Join our community!",

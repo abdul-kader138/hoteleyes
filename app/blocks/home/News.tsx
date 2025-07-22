@@ -15,7 +15,10 @@ export default function Articles() {
   const totalPages = Math.ceil(allArticles.length / itemsPerPage);
   const visibleItems = isSeeAll
     ? allArticles
-    : allArticles.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    : allArticles.slice(
+        currentPage * itemsPerPage,
+        (currentPage + 1) * itemsPerPage
+      );
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -33,8 +36,11 @@ export default function Articles() {
 
   return (
     <section className="text-white box  py-10 xl:px-10 lg:px-10 md:px-10 sm:px-2">
-      <h2 className="text-2xl font-bold mb-5 flex gap-2"> <FaBlogger  className="text-[#D90479] w-8 h-8" />{Lang.news}</h2>
-      
+      <h2 className="text-2xl font-bold mb-5 flex gap-2">
+        {" "}
+        <FaBlogger className="text-[#D90479] w-8 h-8" />
+        {Lang.news}
+      </h2>
 
       {/* Navigation Buttons */}
       <div className="flex flex-wrap items-center gap-4 mb-4">
@@ -48,7 +54,9 @@ export default function Articles() {
               <ArrowLeftIcon className="w-5 h-5" />
             </button>
             <button
-              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))
+              }
               disabled={currentPage >= totalPages - 1}
               className="px-4 py-2 hover:bg-white hover:text-black transition border-l border-white disabled:opacity-30"
             >
@@ -64,7 +72,6 @@ export default function Articles() {
           {isSeeAll ? Lang.see_less ?? "See Less" : Lang.see_all ?? "See All"}
         </button>
       </div>
-
 
       <div className="relative w-full min-h-[280px]">
         <AnimatePresence mode="wait">

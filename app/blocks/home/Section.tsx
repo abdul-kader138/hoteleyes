@@ -7,7 +7,7 @@ type Props = {
 
 export default function Section({ sections }: Props) {
   return (
-   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
       {sections.map((article: any) => (
         <div
           key={article.id}
@@ -29,7 +29,7 @@ export default function Section({ sections }: Props) {
               to={`/blogs/${article.id}`}
               className="inline-block text-sm text-[#D90479] font-medium hover:underline"
             >
-             {Lang.read_more_symbol}
+              {Lang.read_more_symbol}
             </Link>
           </div>
         </div>

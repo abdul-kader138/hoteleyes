@@ -36,7 +36,7 @@ export default function Register() {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ first_name:firstName, last_name:lastName, email, password }),
       });
 
       const data = await response.json();
