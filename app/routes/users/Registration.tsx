@@ -1,9 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { FaFacebook, FaGoogle, FaSpinner } from "react-icons/fa";
-import Select from "react-select";
 import { z } from "zod";
 import Lang from "~/lang/lang";
 import { Helper } from "~/utils/helper";
@@ -14,14 +13,6 @@ const registerSchema = z.object({
   lastName: z.string().min(2, Lang.last_name_validation),
   email: z.string().email(Lang.email_validation),
   password: z.string().min(6, Lang.password_validation),
-  country: z.object(
-    {
-      label: z.string(),
-      value: z.string(),
-      phone_code: z.string(),
-    },
-    { required_error: Lang.country_required }
-  ),
 });
 
 type RegisterFormData = z.infer<typeof registerSchema>;
@@ -44,7 +35,6 @@ export default function Register() {
       lastName: "",
       email: "",
       password: "",
-      country: null,
     },
   });
 
@@ -59,7 +49,6 @@ export default function Register() {
           last_name: formData.lastName,
           email: formData.email,
           password: formData.password,
-          country: formData.country.label, // or iso_code if preferred
         }),
       });
 
@@ -152,32 +141,6 @@ export default function Register() {
             )}
           </div>
 
-          <div className="mb-6">
-            <Controller
-              name="country"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={countries}
-                  placeholder="Select Country"
-                  className="text-black"
-                  styles={{
-                    control: (base) => ({
-                      ...base,
-                      borderRadius: "999px",
-                      padding: "2px",
-                    }),
-                  }}
-                />
-              )}
-            />
-            {errors.country && (
-              <p className="text-red-500 px-2 py-0.5 text-sm">
-                {errors.country.message as string}
-              </p>
-            )}
-          </div>
 
           <button
             type="submit"

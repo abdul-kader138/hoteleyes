@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
-import Select from "react-select";
+import AsyncSelect from "react-select/async";
 import type { Route } from "../+types/Home";
 import { authLoader } from "../../hooks/useAuthUser";
 import Lang from "../../lang/lang";
 import { useUser } from "../../provider/userContext";
-import { Helper } from "../../utils//helper";
+import { Helper } from "../../utils/helper";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -34,7 +34,6 @@ export default function EditProfile() {
   const [phone, setPhone] = useState("");
   const [hotelName, setHotelName] = useState("");
   const [selectedCountry, setSelectedCountry] = useState<any>(null);
-  const [countries, setCountries] = useState<any[]>([]);
   const [profileImage, setProfileImage] = useState("/images/male.png");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -58,25 +57,48 @@ export default function EditProfile() {
   }, [user]);
 
   useEffect(() => {
-    fetch("http://localhost:7001/api/contact/countries")
-      .then((res) => res.json())
-      .then((data) => {
-        const options = data.map((country: any) => ({
-          value: country.iso_code,
-          label: country.name,
-          phone_code: country.phone_code,
-        }));
-        setCountries(options);
-
-        if (user?.country) {
-          const matched = options.find((c: any) => c.label === user.country);
-          if (matched) setSelectedCountry(matched);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to load countries", err);
-      });
+    if (user?.country) {
+      fetch(
+        `${BASE_API}/contact/countries/search?q=${user.country}`,{
+        method: "GET",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" }}
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const matched = data.find((c: any) => c.name === user.country);
+          if (matched) {
+            setSelectedCountry({
+              value: matched.iso_code,
+              label: matched.name,
+              phone_code: matched.phone_code,
+            });
+          }
+        })
+        .catch(console.error);
+    }
   }, [user]);
+
+  const loadCountryOptions = async (inputValue: string) => {
+  if (!inputValue || inputValue.length < 1) return [];
+  try {
+    const res = await fetch(`${BASE_API}/contact/countries/search?q=${encodeURIComponent(inputValue)}`, {
+      method: "GET",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+    return data.map((country: any) => ({
+      value: country.iso_code,
+      label: country.name,
+      phone_code: country.phone_code,
+    }));
+  } catch (error) {
+    console.error("Country search failed:", error);
+    return [];
+  }
+};
+
 
   const handleFileSelect = () => {
     if (fileInputRef.current) fileInputRef.current.click();
@@ -288,19 +310,13 @@ export default function EditProfile() {
                   className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md border border-gray-600"
                 />
               </div>
-              <div>
-                <label className="text-white text-sm">Phone Number</label>
-                <input
-                  type="text"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md border border-gray-600"
-                />
-              </div>
+             
               <div>
                 <label className="text-white text-sm">Country</label>
-                <Select
-                  options={countries}
+                <AsyncSelect
+                  cacheOptions
+                  defaultOptions
+                  loadOptions={loadCountryOptions}
                   value={selectedCountry}
                   onChange={(value) => {
                     setSelectedCountry(value);
@@ -312,6 +328,15 @@ export default function EditProfile() {
                     }
                   }}
                   className="text-black"
+                />
+              </div>
+               <div>
+                <label className="text-white text-sm">Phone Number</label>
+                <input
+                  type="text"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md border border-gray-600"
                 />
               </div>
               <div>
