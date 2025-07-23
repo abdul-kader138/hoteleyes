@@ -80,25 +80,24 @@ export default function EditProfile() {
   }, [user]);
 
   const loadCountryOptions = async (inputValue: string) => {
-  if (!inputValue || inputValue.length < 1) return [];
-  try {
-    const res = await fetch(`${BASE_API}/contact/countries/search?q=${encodeURIComponent(inputValue)}`, {
-      method: "GET",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-    });
-    const data = await res.json();
-    return data.map((country: any) => ({
-      value: country.iso_code,
-      label: country.name,
-      phone_code: country.phone_code,
-    }));
-  } catch (error) {
-    console.error("Country search failed:", error);
-    return [];
-  }
-};
-
+    if (!inputValue || inputValue.length < 1) return [];
+    try {
+      const res = await fetch(`${BASE_API}/contact/countries/search?q=${encodeURIComponent(inputValue)}`, {
+        method: "GET",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      return data.map((country: any) => ({
+        value: country.iso_code,
+        label: country.name,
+        phone_code: country.phone_code,
+      }));
+    } catch (error) {
+      console.error("Country search failed:", error);
+      return [];
+    }
+  };
 
   const handleFileSelect = () => {
     if (fileInputRef.current) fileInputRef.current.click();
@@ -310,7 +309,7 @@ export default function EditProfile() {
                   className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md border border-gray-600"
                 />
               </div>
-             
+
               <div>
                 <label className="text-white text-sm">Country</label>
                 <AsyncSelect
@@ -324,20 +323,25 @@ export default function EditProfile() {
                       value?.phone_code &&
                       !phone.startsWith(value.phone_code)
                     ) {
-                      setPhone(value.phone_code);
+                      setPhone("");
                     }
                   }}
                   className="text-black"
                 />
               </div>
-               <div>
+              <div>
                 <label className="text-white text-sm">Phone Number</label>
-                <input
-                  type="text"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full p-2 mt-1 bg-gray-700 text-white rounded-md border border-gray-600"
-                />
+                <div className="flex">
+                  <span className="bg-gray-600 text-white px-3 py-2 rounded-l-md border border-r-0 border-gray-600 min-w-[65px] text-center">
+                    {selectedCountry?.phone_code || ""}
+                  </span>
+                  <input
+                    type="text"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full p-2 mt-0 bg-gray-700 text-white rounded-r-md border border-gray-600"
+                  />
+                </div>
               </div>
               <div>
                 <label className="text-white text-sm">Hotel Name</label>
