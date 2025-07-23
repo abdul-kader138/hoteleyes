@@ -18,10 +18,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const forgotPasswordSchema = z.object({
-  email: z
-    .email(Lang.invalid_email),       
+  email: z.email(Lang.invalid_email),
 });
-
 
 type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
 
@@ -62,7 +60,7 @@ export default function ForgotPassword() {
   return (
     <div className="min-h-screen flex items-center justify-center px-2">
       <Toaster position="top-right" />
-     <div className="bg-gray-800 w-full max-w-2xl rounded-2xl shadow-2xl p-8 sm:p-12 lg:p-16">
+      <div className="bg-gray-800 min-w-md rounded-lg shadow-lg p-5 sm:p-5 lg:p-16">
         <div className="text-center mb-8">
           <a href="/">
             <img
@@ -87,7 +85,9 @@ export default function ForgotPassword() {
               className="w-full p-3 bg-gray-700 rounded-full text-sm text-white border border-gray-600 focus:border-[#D90479] outline-none"
             />
             {errors.email && (
-              <p className="text-red-500 px-2 py-1 text-sm">{errors.email.message}</p>
+              <p className="text-red-500 px-2 py-1 text-sm">
+                {errors.email.message}
+              </p>
             )}
           </div>
 
@@ -105,7 +105,7 @@ export default function ForgotPassword() {
         </form>
 
         <div className="text-center mt-6">
-          <a href="/login" className="text-[#D90479] hover:underline text-sm">
+          <a href="/login" className="text-pink-500 hover:underline text-sm">
             {Lang.cancle}
           </a>
         </div>

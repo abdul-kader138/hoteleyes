@@ -78,7 +78,7 @@ const Lang = {
   send_message: " Send Message",
 
   // common
-  data_saved:"Data save successfully.",
+  data_saved: "Data save successfully.",
 
   //footer
   join_us: "Join our community!",
@@ -164,7 +164,7 @@ const Lang = {
   enter: "Enter",
   sign_up_image: "✨ Sign Up",
   sign_up: "Sign Up",
-  about_me: "About me",
+  about_me: "Address",
   about_us: "About us",
   useful_link: "USEFUL LINKS",
   already_account: "Already have an account?",

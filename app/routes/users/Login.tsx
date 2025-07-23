@@ -68,10 +68,10 @@ export default function Login() {
   };
 
   return (
-   <div className="min-h-screen flex items-center justify-center px-2">
-  <Toaster position="top-right" />
-  <div className="bg-gray-800 w-full max-w-2xl rounded-2xl shadow-2xl p-8 sm:p-12 lg:p-16">
-    <div className="text-center mb-8">
+    <div className="min-h-screen flex items-center justify-center px-2">
+      <Toaster position="top-right" />
+      <div className="bg-gray-800 min-w-md rounded-lg shadow-lg p-5 sm:p-5 lg:p-16">
+        <div className="text-center mb-8">
           <a href="/">
             <img
               src="/images/logos/logo.svg"
@@ -117,7 +117,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 cursor-pointer text-sm bg-[#D90479] hover:scale-[1.05] transition-transform text-white font-semibold rounded-full flex items-center justify-center"
+            className="w-full py-3 cursor-pointer text-sm bg-pink-600 hover:scale-[1.05] transition-transform text-white font-semibold rounded-full flex items-center justify-center"
           >
             {isSubmitting ? (
               <FaSpinner className="animate-spin text-xl" />
@@ -129,7 +129,7 @@ export default function Login() {
           <div className="text-center">
             <a
               href="/forgot-password"
-              className="text-[#D90479] hover:underline text-sm"
+              className="text-pink-500 hover:underline text-sm"
             >
               {Lang.forgot_password}?
             </a>
@@ -146,7 +146,7 @@ export default function Login() {
 
           <div className="text-center text-sm text-gray-400 mt-6">
             {Lang.no_account}{" "}
-            <a href="/registration" className="text-[#D90479] hover:underline">
+            <a href="/registration" className="text-pink-500 hover:underline">
               {Lang.sign_up_now}
             </a>
           </div>

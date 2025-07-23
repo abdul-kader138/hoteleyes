@@ -72,68 +72,66 @@ export default function ResetPassword() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <Toaster position="top-right" />
-        <div className="bg-gray-800 w-full max-w-2xl rounded-2xl shadow-2xl p-8 sm:p-12 lg:p-16">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-       className="space-y-5">
-        <div className="text-center mb-8">
-          <a href="/">
-            <img
-              src="/images/logos/logo.svg"
-              alt="Logo"
-              className="mx-auto h-10 w-auto"
+      <div className="bg-gray-800 min-w-md rounded-lg shadow-lg p-5 sm:p-5 lg:p-16">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <div className="text-center mb-8">
+            <a href="/">
+              <img
+                src="/images/logos/logo.svg"
+                alt="Logo"
+                className="mx-auto h-10 w-auto"
+              />
+            </a>
+            <h1 className="text-white text-xl font-semibold mt-6">
+              {Lang.reset_password}
+            </h1>
+          </div>
+
+          <div className="mb-4">
+            <input
+              type="password"
+              placeholder={Lang.new_password}
+              {...register("password")}
+              value={watch("password")}
+              onChange={(e) => setValue("password", e.target.value)}
+              className="w-full p-3 rounded-full bg-gray-700 text-sm text-white border border-gray-600 focus:border-[#D90479] outline-none"
             />
-          </a>
-          <h1 className="text-white text-xl font-semibold mt-6">
-            {Lang.reset_password}
-          </h1>
-        </div>
+            {errors.password && (
+              <p className="text-red-500 px-2 pt-1 text-sm">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
 
-        <div className="mb-4">
-          <input
-            type="password"
-            placeholder={Lang.new_password}
-            {...register("password")}
-            value={watch("password")}
-            onChange={(e) => setValue("password", e.target.value)}
-            className="w-full p-3 rounded-full bg-gray-700 text-sm text-white border border-gray-600 focus:border-[#D90479] outline-none"
-          />
-          {errors.password && (
-            <p className="text-red-500 px-2 pt-1 text-sm">
-              {errors.password.message}
-            </p>
-          )}
-        </div>
+          <div className="mb-4">
+            <input
+              type="password"
+              placeholder={Lang.confirm_password}
+              {...register("confirmPassword")}
+              value={watch("confirmPassword")}
+              onChange={(e) => setValue("confirmPassword", e.target.value)}
+              className="w-full p-3 rounded-full bg-gray-700 text-sm text-white border border-gray-600 focus:border-[#D90479] outline-none"
+            />
+            {errors.confirmPassword && (
+              <p className="text-red-500 px-2 pt-1 text-sm">
+                {errors.confirmPassword.message}
+              </p>
+            )}
+          </div>
 
-        <div className="mb-4">
-          <input
-            type="password"
-            placeholder={Lang.confirm_password}
-            {...register("confirmPassword")}
-            value={watch("confirmPassword")}
-            onChange={(e) => setValue("confirmPassword", e.target.value)}
-            className="w-full p-3 rounded-full bg-gray-700 text-sm text-white border border-gray-600 focus:border-[#D90479] outline-none"
-          />
-          {errors.confirmPassword && (
-            <p className="text-red-500 px-2 pt-1 text-sm">
-              {errors.confirmPassword.message}
-            </p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full py-3 cursor-pointer text-sm bg-[#D90479] hover:scale-[1.05] transition-transform text-white font-semibold rounded-full flex items-center justify-center"
-        >
-          {isSubmitting ? (
-            <FaSpinner className="animate-spin text-xl" />
-          ) : (
-            Lang.continue
-          )}
-        </button>
-      </form>
-    </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full py-3 cursor-pointer text-sm bg-[#D90479] hover:scale-[1.05] transition-transform text-white font-semibold rounded-full flex items-center justify-center"
+          >
+            {isSubmitting ? (
+              <FaSpinner className="animate-spin text-xl" />
+            ) : (
+              Lang.continue
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
