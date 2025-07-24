@@ -7,7 +7,12 @@ interface User {
   email: string;
   first_name: string;
   last_name: string;
-  about_me: string;
+  address: string;
+  gender: string;
+  hotel_name: string;
+  phone_number: string;
+  date_of_birth: string;
+  country: any;
 }
 const { BASE_API } = new Helper();
 

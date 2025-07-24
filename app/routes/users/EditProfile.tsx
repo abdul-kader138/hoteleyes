@@ -1,3 +1,8 @@
+import {
+  getCountryCallingCode,
+  isValidPhoneNumber,
+  parsePhoneNumberFromString
+} from 'libphonenumber-js';
 import { useEffect, useRef, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
@@ -23,6 +28,7 @@ export default function EditProfile() {
   const [loading, setLoading] = useState(false);
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [error, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const { BASE_API, validateTextLength, validateEmail } = new Helper();
 
   const [firstName, setFirstName] = useState("");
@@ -39,8 +45,8 @@ export default function EditProfile() {
 
   useEffect(() => {
     authLoader();
-
     if (user) {
+      console.log(user);
       setFirstName(user.first_name || "");
       setLastName(user.last_name || "");
       setEmail(user.email || "");
@@ -49,6 +55,12 @@ export default function EditProfile() {
       setDob(user.date_of_birth?.split("T")[0] || "");
       setPhone(user.phone_number || "");
       setHotelName(user.hotel_name || "");
+      setSelectedCountry({
+              iso_code: user?.country?.iso_code??'',
+              value: user?.country?.id ??'',
+              label: user?.country?.name??'',
+              phone_code: user?.country?.phone_code??'',
+            });
 
       if (user?.photo_id) {
         setProfileImage(`${BASE_API}/photos/${user?.photo_id}/small`);
@@ -69,7 +81,8 @@ export default function EditProfile() {
           const matched = data.find((c: any) => c.name === user.country);
           if (matched) {
             setSelectedCountry({
-              value: matched.iso_code,
+              iso_code: matched.iso_code,
+              value: matched.id,
               label: matched.name,
               phone_code: matched.phone_code,
             });
@@ -78,6 +91,40 @@ export default function EditProfile() {
         .catch(console.error);
     }
   }, [user]);
+
+  // Validate phone number when country or phone changes
+  useEffect(() => {
+    if (phone && selectedCountry?.value) {
+      try {
+        const phoneNumber = parsePhoneNumberFromString(
+          phone, 
+          selectedCountry.iso_code
+        );
+        
+        if (!phoneNumber || !phoneNumber.isValid()) {
+          setPhoneError(Lang.invalid_phone || "Invalid phone number");
+        } else {
+          setPhoneError("");
+        }
+      } catch (error) {
+        setPhoneError(Lang.invalid_phone || "Invalid phone number");
+      }
+    } else if (phone) {
+      setPhoneError(Lang.country_required || "Select country first");
+    } else {
+      setPhoneError("");
+    }
+  }, [phone, selectedCountry]);
+
+  // Reset phone when country changes
+  useEffect(() => {
+    if (selectedCountry?.iso_code && phone) {
+      const callingCode = `+${getCountryCallingCode(selectedCountry.iso_code)}`;
+      if (!phone.startsWith(callingCode)) {
+        setPhone("");
+      }
+    }
+  }, [selectedCountry]);
 
   const loadCountryOptions = async (inputValue: string) => {
     if (!inputValue || inputValue.length < 1) return [];
@@ -89,7 +136,8 @@ export default function EditProfile() {
       });
       const data = await res.json();
       return data.map((country: any) => ({
-        value: country.iso_code,
+        value: country.id,
+        iso_code: country.iso_code,
         label: country.name,
         phone_code: country.phone_code,
       }));
@@ -167,6 +215,25 @@ export default function EditProfile() {
       setError(Lang.about_me_validation);
       return false;
     }
+    
+    // Phone validation
+    if (phone) {
+      if (!selectedCountry?.value) {
+        setError(Lang.country_required || "Country is required for phone validation");
+        return false;
+      }
+      
+      if (phoneError) {
+        setError(Lang.invalid_phone || "Invalid phone number");
+        return false;
+      }
+      
+      if (!isValidPhoneNumber(phone, selectedCountry.iso_code)) {
+        setError(Lang.invalid_phone || "Invalid phone number");
+        return false;
+      }
+    }
+
     setError("");
     return true;
   };
@@ -187,9 +254,9 @@ export default function EditProfile() {
           email,
           address: aboutMe,
           gender,
-          date_of_birth: dob,
+          date_of_birth: new Date(dob),
           phone_number: phone,
-          country: selectedCountry?.label,
+          country_id: selectedCountry?.value,
           hotel_name: hotelName,
         }),
       });
@@ -198,12 +265,22 @@ export default function EditProfile() {
       if (!response.ok)
         throw new Error(data.message || Lang.profile_update_failed);
       setUser(data.user);
-      toast.success(Lang.profile_update_success, { duration: 2000 });
     } catch (error: any) {
       setError(error.message);
       toast.error(error.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const formatPhoneNumber = (value: string) => {
+    if (!selectedCountry?.value) return value;
+    
+    try {
+      const phoneNumber = parsePhoneNumberFromString(value, selectedCountry.iso_code);
+      return phoneNumber?.formatInternational() || value;
+    } catch (error) {
+      return value;
     }
   };
 
@@ -319,12 +396,6 @@ export default function EditProfile() {
                   value={selectedCountry}
                   onChange={(value) => {
                     setSelectedCountry(value);
-                    if (
-                      value?.phone_code &&
-                      !phone.startsWith(value.phone_code)
-                    ) {
-                      setPhone("");
-                    }
                   }}
                   className="text-black"
                 />
@@ -332,16 +403,23 @@ export default function EditProfile() {
               <div>
                 <label className="text-white text-sm">Phone Number</label>
                 <div className="flex">
-                  <span className="bg-gray-600 text-white px-3 py-2 rounded-l-md border border-r-0 border-gray-600 min-w-[65px] text-center">
+                 {/*  <span className="bg-gray-600 text-white px-3 py-2 rounded-l-md border border-r-0 border-gray-600 min-w-[65px] text-center">
                     {selectedCountry?.phone_code || ""}
-                  </span>
+                  </span> */}
                   <input
-                    type="text"
+                    type="tel"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                      const formatted = formatPhoneNumber(e.target.value);
+                      setPhone(formatted);
+                    }}
                     className="w-full p-2 mt-0 bg-gray-700 text-white rounded-r-md border border-gray-600"
+                    placeholder={selectedCountry ? "Enter phone number" : "Select country first"}
                   />
                 </div>
+                {phoneError && (
+                  <p className="text-red-500 text-sm mt-1">{phoneError}</p>
+                )}
               </div>
               <div>
                 <label className="text-white text-sm">Hotel Name</label>

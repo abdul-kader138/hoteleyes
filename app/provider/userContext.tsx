@@ -10,6 +10,11 @@ interface User {
   email: string;
   address: string;
   photo_id: number;
+  gender: string;
+  hotel_name: string;
+  phone_number: string;
+  date_of_birth: string;
+  country: any;
 }
 
 interface UserContextType {
