@@ -82,6 +82,14 @@ export default function TopMenuBar() {
                   >
                     {Lang.profil}
                   </a>
+                  </MenuItem>
+                  <MenuItem>
+                  <a
+                    href="/user-list"
+                    className="block px-2.5 py-1.5 text-sm text-white hover:bg-[#D90479]"
+                  >
+                    {Lang.user}
+                  </a>
                 </MenuItem>
                 <MenuItem>
                   <a

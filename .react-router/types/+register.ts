@@ -27,6 +27,7 @@ type Params = {
   "/blogs/:articleId": {
     "articleId": string;
   };
+  "/user-list": {};
   "/*": {
     "*": string;
   };

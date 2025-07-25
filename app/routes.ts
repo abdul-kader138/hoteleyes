@@ -23,6 +23,7 @@ export default [
     route("services", "routes/Services.tsx"),
     route("game/:id", "blocks/games/Game.tsx"),
     route("blogs/:articleId", "blocks/home/Article.tsx"),
+    route("user-list/", "routes/admin/UserList.tsx"),
   ]),
 
   // 🔹 Fallback (404 page)

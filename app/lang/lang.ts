@@ -256,6 +256,15 @@ const Lang = {
   update: "Update",
   about_me_validation: "Addrees must be lessthan 300 characters",
   profile_update_failed: "Profile update failed.",
+
+  // user list
+
+  user_list_description:"Manage and view all system users",
+  search_placeholder:"Search users...",
+  total_user:"Total Users",
+  active_today:"Active Today",
+  gender:"Gender",
+  hotel_name:"Hotel Name",
 };
 
 export default Lang;
