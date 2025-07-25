@@ -89,7 +89,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-3xl sm:text-3xl md:text-4xl font-bold mb-6 text-center min-h-[3rem]"
+          className="text-4xl sm:text-3xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-sky-300 to-pink-300 font-bold mb-6 text-center min-h-[3rem]"
         >
           {typedText}
           {showCursor && <span className="animate-pulse">|</span>}
@@ -109,7 +109,7 @@ export default function HeroSection() {
             >
               <Link
                 to={path}
-                className="font-semibold bg-[#D90479] px-5 py-2 text-sm sm:py-3 sm:text-base rounded-full hover:bg-white hover:text-black transition"
+                className="font-semibold bg-gradient-to-r from-pink-600 to-purple-600 px-5 py-2 text-sm sm:py-3 sm:text-base rounded-full hover:bg-white hover:text-black transition"
               >
                 {i === 0 ? "Our Games" : i === 1 ? "Services" : "Contact Us"}
               </Link>

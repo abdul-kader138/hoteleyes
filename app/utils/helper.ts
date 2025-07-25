@@ -9,6 +9,20 @@ interface Section {
   image: string;
 }
 
+export type ContentType = "blog" | "announcement" | "event" | "diary";
+
+export interface ContentItem {
+  id: number;
+  type: ContentType;
+  title: string;
+  excerpt: string;
+  date: string;
+  image?: string;
+  category?: string;
+  author?: string;
+  readTime?: string;
+}
+
 export class Helper {
   // API Base URL (from environment variables)
   BASE_API = `${import.meta.env.VITE_API_BASE_URL}`;
@@ -27,7 +41,7 @@ export class Helper {
       current: false,
     },
     { name: Lang.about, href: "/about", current: false },
-    { name: Lang.service, href: "#", current: false },
+    { name: Lang.service, href: "/services", current: false },
 
     {
       name: Lang.contact,
@@ -35,7 +49,7 @@ export class Helper {
       current: false,
     },
     { name: Lang.games, href: "/games", current: false },
-    { name: Lang.news, href: "#", current: false },
+    { name: Lang.news, href: "/news", current: false },
   ];
 
   validateEmail = (email: string) => {
@@ -96,6 +110,36 @@ export class Helper {
   getCurrentYear = (): any => {
     const year = new Date().getFullYear();
     return year;
+  };
+
+  getTypeLabel = (type: ContentType | "all") => {
+    switch (type) {
+      case "blog":
+        return "Blog";
+      case "announcement":
+        return "Announcement";
+      case "event":
+        return "Event";
+      case "diary":
+        return "Developer Diary";
+      default:
+        return "All News";
+    }
+  };
+
+  getTypeColor = (type: ContentType) => {
+    switch (type) {
+      case "blog":
+        return "bg-blue-500";
+      case "announcement":
+        return "bg-pink-500";
+      case "event":
+        return "bg-purple-500";
+      case "diary":
+        return "bg-amber-500";
+      default:
+        return "bg-gray-500";
+    }
   };
 
   /**
@@ -279,22 +323,18 @@ export class Helper {
       bgcolor: "#E62928",
     },
     {
-      title: Lang.new_arrive,
       image: "/images/slider/new-title.png",
       bgcolor: "#E5632F",
     },
     {
-      title: Lang.countdown,
       image: "/images/slider/countdown.png",
       bgcolor: "#D4C52F",
     },
     {
-      title: Lang.community_discord,
       image: "/images/slider/discord.png",
       bgcolor: "#52A04D",
     },
     {
-      title: Lang.new_aggrement,
       image: "/images/slider/update.png",
       bgcolor: "#3B98BC",
     },
@@ -306,87 +346,21 @@ export class Helper {
       title: Lang.steel_saviour,
       date: Lang.steel_saviour_date,
       description: Lang.steel_saviour_details,
-      image: "/images/game-section/steel_savior.jpg",
+      image: "/images/products/other-section/wonder.png",
     },
     {
       id: 2,
       title: Lang.eleven_years_ago,
       date: Lang.eleven_years_ago_year,
       description: Lang.eleven_years_ago_details,
-      image: "/images/game-section/eleven_years_ago.jpg",
+      image: "/images/products/other-section/book.png",
     },
     {
       id: 3,
       title: Lang.red_rum,
       date: Lang.red_rum_year,
       description: Lang.red_rum_details,
-      image: "/images/game-section/redrum.png",
-    },
-  ];
-
-  newsSection: Section[] = [
-    {
-      id: 1,
-      title: Lang.commodore_industries,
-      date: Lang.commodore_industries_year,
-      description: Lang.commodore_industries_details,
-      image: "/images/news-section/1.png",
-    },
-    {
-      id: 2,
-      title: Lang.significant_progress,
-      date: Lang.significant_progress_year,
-      description: Lang.significant_progress_details,
-      image: "/images/news-section/2.png",
-    },
-    {
-      id: 3,
-      title: Lang.commodore_reviews,
-      date: Lang.commodore_reviews_date,
-      description: Lang.commodore_industries_details,
-      image: "/images/news-section/3.png",
-    },
-    {
-      id: 4,
-      title: Lang.commodore_industries,
-      date: Lang.commodore_industries_year,
-      description: Lang.commodore_industries_details,
-      image: "/images/news-section/1.png",
-    },
-    {
-      id: 5,
-      title: Lang.significant_progress,
-      date: Lang.significant_progress_year,
-      description: Lang.significant_progress_details,
-      image: "/images/news-section/2.png",
-    },
-    {
-      id: 6,
-      title: Lang.commodore_reviews,
-      date: Lang.commodore_reviews_date,
-      description: Lang.commodore_industries_details,
-      image: "/images/news-section/3.png",
-    },
-    {
-      id: 7,
-      title: Lang.commodore_industries,
-      date: Lang.commodore_industries_year,
-      description: Lang.commodore_industries_details,
-      image: "/images/news-section/1.png",
-    },
-    {
-      id: 8,
-      title: Lang.significant_progress,
-      date: Lang.significant_progress_year,
-      description: Lang.significant_progress_details,
-      image: "/images/news-section/2.png",
-    },
-    {
-      id: 9,
-      title: Lang.commodore_reviews,
-      date: Lang.commodore_reviews_date,
-      description: Lang.commodore_industries_details,
-      image: "/images/news-section/3.png",
+      image: "/images/products/other-section/golden.png",
     },
   ];
 
@@ -519,18 +493,6 @@ export class Helper {
     },
   ];
 
-  productSlides = [
-    {
-      type: "video",
-      src: "/videos/product/mr.mp4",
-      poster: "/videos/product/thumbnail.png",
-    },
-    { type: "image", src: "/images/products/product/image1.png" },
-    { type: "image", src: "/images/products/product/image2.png" },
-    { type: "image", src: "/images/products/product/image3.png" },
-    { type: "image", src: "/images/products/product/image4.png" },
-  ];
-
   productDetailsData = {
     title: "Millennium Runners",
     intro: [
@@ -615,22 +577,22 @@ export class Helper {
 
   otherSection = [
     {
-      title: "Steel Saviour",
+      title: "Dragon's Lock",
       edition: "Standard Edition",
       price: "5,99 €",
-      image: "/images/products/other-section/steel-saviour.png",
+      image: "/images/products/other-section/dragon.png",
     },
     {
-      title: "Red Rum",
-      edition: "Standard Edition",
+      title: "Book Of Fairies",
+      edition: "Book Of Fairies",
       price: "0,99 €",
-      image: "/images/products/other-section/redrum.png",
+      image: "/images/products/other-section/book.png",
     },
     {
-      title: "11 Years Ago",
-      edition: "Standard Edition",
+      title: "Golden For the Year",
+      edition: "Golden For the Year",
       price: "4,99 €",
-      image: "/images/products/other-section/11-years-ago.png",
+      image: "/images/products/other-section/golden.png",
     },
     {
       title: "Cheers!",
@@ -932,6 +894,23 @@ export class Helper {
     }),
   };
 
+  staggerContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
   container = {
     hidden: {},
     visible: {
@@ -957,4 +936,225 @@ export class Helper {
       { label: "Name Z-A", value: "name-desc" },
     ],
   };
+
+  gameDetails = {
+    gameName: "Rise Of Cleopatra",
+    shortDescription:
+      "Maecenas ac fermentum diam. Phasellus libero leo, lobortis sit amet mauris sit amet, semper dignissim libero. Nulla a maximus justo. Vivamus pharetra nisl odio, vel egestas orci dictum ut. Phasellus sit amet dignissim eros. Mauris in dui vitae diam semper eleifend.",
+    description:
+      "Maecenas ac fermentum diam. Phasellus libero leo, lobortis sit amet mauris sit amet, semper dignissim libero. Nulla a maximus justo. Vivamus pharetra nisl odio, vel egestas orci dictum ut. Phasellus sit amet dignissim eros. Mauris in dui vitae diam semper eleifend. Mauris cursus tortor eu viverra consequat. Nulla or enim, bibendu fringilla elementum.Aenean vitae nisi placerat, sagittis justo tempus, consequat neque. Aliquam tristique, felis ut efficitur mollis, mi erat scelerisque magna, a hendrerit purus magna sed urna. Nulla eu lorem iaculis, hendrerit erat nec, vulputate ipsum. Pellentesque nulla odio, feugiat sed arcu nec, vehicula rutrum tortor. Cras sit amet nunc ipsum. Nam semper eget velit quis varius. Vivamus eget nunc in metus venenatis aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras egestas sem at massa ultrices, quis interdum ligula ultricies. Mauris suscipit varius sapien quis consequat. In hac habitasse platea dictumst.",
+    provider: "ORORO",
+    releaseDate: "2025‑07‑03",
+    reels: 5,
+    rows: 4,
+    paylines: 20,
+    volatility: "High",
+    hitFrequency: "High",
+    RTP: 95.69,
+    minBet: 0.1,
+    maxBet: 10.0,
+    multiLanguage: true,
+    maxWinMultiplier: 325,
+    features: [
+      "Jars & Scarab Wilds",
+      "Remove Suits",
+      "Random Wilds",
+      "Multiplier",
+      "Mega Wilds",
+      "Free Spins",
+      "Feature Buy",
+    ],
+    featureDescriptions: [
+      {
+        name: "Jars & Scarab Wilds",
+        description:
+          "Scarab Wilds land on reels 1, 3, 5 and fill jars to unlock four features progressively: Remove Suits (6 scarabs), Random Wilds (12), Multiplier (18), and Mega Wilds (24). Once unlocked, features may trigger randomly on future spins. Scarb wilds substitute for all paying symbols.",
+      },
+      {
+        name: "Remove Suits",
+        description: "Removes all low-paying card suit symbols for one spin.",
+      },
+      {
+        name: "Random Wilds",
+        description: "Adds a random number of Cleopatra Wilds on the reels.",
+      },
+      {
+        name: "Multiplier",
+        description:
+          "A sundial spins to reveal a multiplier (x2–x10); can stack if no win; applies in and out of Free Spins.",
+      },
+      {
+        name: "Mega Wilds",
+        description: "Adds Cleopatra Wild Mega symbols (2x2 or 3x3).",
+      },
+      {
+        name: "Free Spins",
+        description:
+          "3/4/5 scatters award 8/10/12 spins; additional scatters grant 4/5/6 spins; unlocked features carry into bonus.",
+      },
+      {
+        name: "Feature Buy",
+        description: "Buy for 15× stake to unlock all base-game features.",
+      },
+    ],
+    license: [
+      "Gambling Commission of Great Britain",
+      "Malta Gambling Authority",
+    ],
+    platforms: ["Desktop", "Tablet", "Mobile"],
+    gameImages: [
+      /* {
+        type: "video",
+        src: "/videos/product/mr.mp4",
+        poster: "/videos/product/thumbnail.png",
+      }, */
+      { type: "image", src: "/images/games/banner-1.png" },
+      { type: "image", src: "/images/games/banner-2.png" },
+      { type: "image", src: "/images/games/banner-3.png" },
+      { type: "image", src: "/images/games/banner-4.png" },
+      { type: "image", src: "/images/products/other-section/wonder.png" },
+      /* { type: "image", src: "/images/products/product/image2.png" },
+      { type: "image", src: "/images/products/product/image3.png" },
+      { type: "image", src: "/images/products/product/image4.png" }, */
+    ],
+  };
+
+  newsContent: ContentItem[] = [
+    {
+      id: 1,
+      type: "blog",
+      title: "The Future of Blockchain Gaming",
+      excerpt:
+        "Exploring how blockchain technology is revolutionizing the gaming industry and what it means for players.",
+      date: "2023-10-15",
+      category: "Industry Insights",
+      author: "Alex Johnson",
+      readTime: "5 min read",
+      image: "/images/default-article1.png",
+    },
+    {
+      id: 2,
+      type: "announcement",
+      title: "New Game Launch: Crypto Quest",
+      excerpt:
+        "We're excited to announce the launch of our newest blockchain-based RPG adventure game.",
+      date: "2023-11-02",
+      image: "/images/default-article2.png",
+    },
+    {
+      id: 3,
+      type: "event",
+      title: "Join Us at Blockchain Expo 2023",
+      excerpt:
+        "We'll be showcasing our latest games and technologies at the biggest blockchain event of the year.",
+      date: "2023-11-20",
+      image: "/images/default-article3.png",
+    },
+    {
+      id: 4,
+      type: "diary",
+      title: "Behind the Scenes: Developing Our NFT System",
+      excerpt:
+        "A deep dive into how we designed the NFT mechanics for our flagship game.",
+      date: "2023-10-28",
+      author: "Sarah Dev",
+      readTime: "8 min read",
+      image: "/images/default-article4.png",
+    },
+    {
+      id: 5,
+      type: "blog",
+      title: "Top 5 Tips for New Crypto Gamers",
+      excerpt:
+        "Essential tips to help newcomers navigate the world of cryptocurrency gaming.",
+      date: "2023-10-05",
+      category: "Player Tips",
+      readTime: "4 min read",
+      image: "/images/default-article.png",
+    },
+    {
+      id: 6,
+      type: "announcement",
+      title: "Partnership with Polygon Studios",
+      excerpt:
+        "We're proud to announce our new partnership to bring faster and cheaper transactions to our players.",
+      date: "2023-11-15",
+      image: "/images/default-article.png",
+    },
+  ];
+
+  coreServices = [
+    {
+      title: "Game Design & Development",
+      description:
+        "Full-cycle game development from concept to launch with innovative mechanics and engaging gameplay",
+      icon: "🎮",
+    },
+    {
+      title: "2D/3D Animation",
+      description:
+        "High-quality character and environment animations that bring your game world to life",
+      icon: "🖌️",
+    },
+    {
+      title: "Mobile & PC Game Development",
+      description:
+        "Cross-platform development for all major platforms with optimized performance",
+      icon: "📱",
+    },
+    {
+      title: "Promotional Tools & Game Solutions",
+      description:
+        "Marketing tools, analytics dashboards, and player engagement solutions",
+      icon: "📊",
+    },
+  ];
+
+  processSteps = [
+    {
+      step: 1,
+      title: "Concept",
+      description: "Brainstorming ideas and creating the initial game concept",
+    },
+    {
+      step: 2,
+      title: "Design",
+      description: "Creating game mechanics, characters, and world design",
+    },
+    {
+      step: 3,
+      title: "Development",
+      description: "Coding, asset creation, and system implementation",
+    },
+    {
+      step: 4,
+      title: "Launch",
+      description: "Quality assurance and market deployment",
+    },
+    {
+      step: 5,
+      title: "Support",
+      description: "Post-launch updates, maintenance, and community support",
+    },
+  ];
+
+  differentiators = [
+    {
+      title: "Innovative Mechanics",
+      description: "Unique gameplay systems that keep players engaged",
+    },
+    {
+      title: "Cutting-Edge Tech",
+      description:
+        "Utilizing latest engines and technologies for superior performance",
+    },
+    {
+      title: "Player-First Approach",
+      description: "Design focused on player experience and retention",
+    },
+    {
+      title: "Proven Track Record",
+      description: "Successful launches across multiple genres and platforms",
+    },
+  ];
 }

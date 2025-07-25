@@ -28,7 +28,7 @@ export default function MobileMenu() {
           </DisclosureButton>
 
           {/* Mobile Menu Panel */}
-          <DisclosurePanel className="fixed top-0 left-0 right-0 z-50 bg-[#000f26] px-6 py-2 flex flex-col space-y-6 min-h-screen overflow-y-auto">
+          <DisclosurePanel className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-[#0F172A] to-[#1A1A2E] px-6 py-2 flex flex-col space-y-6 min-h-screen overflow-y-auto">
             {/* Close Button inside panel */}
             <div className="w-full flex justify-end">
               <DisclosureButton className="p-2 text-white hover:text-gray-300">

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { AiFillFire } from "react-icons/ai";
 import { IoDiamond } from "react-icons/io5";
+import { Link } from "react-router";
 import Lang from "~/lang/lang";
 import { Helper } from "~/utils/helper";
 
@@ -56,7 +57,7 @@ export default function FeatureGames() {
                     <img
                       src={game.image}
                       alt={game.title}
-                      className="w-full h-full object-cover rounded-2xl"
+                      className="w-full h-full object-cover"
                     />
                     <div className="absolute top-2 right-2 bg-opacity-10 p-1 rounded-full"></div>
                     <div className="absolute top-2 right-2 bg-opacity-50 p-1 rounded-full z-10">
@@ -68,9 +69,12 @@ export default function FeatureGames() {
                     <p className="text-md text-gray-400 leading-snug">
                       {game.description}
                     </p>
-                    <button className="mt-3 cursor-pointer px-4 py-1.5 border rounded-full border-[#D90479] text-white text-sm hover:bg-[#D90479] hover:text-white transition">
+                    <Link
+                      to="/game/1"
+                      className="mt-3 cursor-pointer px-4 py-1.5 border rounded-full border-[#D90479] text-white text-sm hover:bg-gradient-to-r from-pink-600 to-purple-600 hover:text-white transition"
+                    >
                       {Lang.open}
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </section>

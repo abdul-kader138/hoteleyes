@@ -65,12 +65,12 @@ export default function Articles() {
           </div>
         )}
 
-        <button
-          onClick={() => setIsSeeAll((prev) => !prev)}
-          className="border border-white rounded-full px-4 py-1 text-xs hover:bg-white hover:text-black transition"
+        <a
+          href="/news"
+          className=" text-gray-200 rounded-full px-5 py-2 text-sm bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-[1.05]"
         >
-          {isSeeAll ? Lang.see_less ?? "See Less" : Lang.see_all ?? "See All"}
-        </button>
+          {Lang.see_more}
+        </a>
       </div>
 
       <div className="relative w-full min-h-[280px]">

@@ -19,7 +19,11 @@ type Params = {
   "/about": {};
   "/contact": {};
   "/games": {};
-  "/game/1": {};
+  "/news": {};
+  "/services": {};
+  "/game/:id": {
+    "id": string;
+  };
   "/blogs/:articleId": {
     "articleId": string;
   };

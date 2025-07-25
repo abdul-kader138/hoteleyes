@@ -74,7 +74,7 @@ export default function TopMenuBar() {
                   )}
                 </MenuButton>
               </div>
-              <MenuItems className="absolute right-0 mt-2 w-48 bg-gray-700 rounded-md shadow-lg py-1 z-50">
+              <MenuItems className="absolute right-0 mt-2 w-48 bg-gray-700 rounded-md shadow-lg py-1 ring-1 ring-black/5 z-50">
                 <MenuItem>
                   <a
                     href="/profile"

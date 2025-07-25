@@ -1,36 +1,45 @@
+// Header.tsx
+import { motion } from "framer-motion";
 import TopMenuBar from "./TopMenuBar";
 import MobileMenu from "./mobile-menu/MobileMenu";
 
 export function Header() {
   return (
-    <>
-      <header className="xs:mt-0.5 sm:mt-0.5 bg-gradient-to-b from-[#0F172A] to-[#1A1A2E] shadow-md">
-        {/* Mobile Header */}
-        <div className="md:hidden flex items-center justify-between py-1.5 relative">
-          {/* Burger on Right */}
-          <div className="absolute left-0 mx-2">
-            <MobileMenu />
-          </div>
-
-          {/* Logo in center */}
-          <div className="flex-grow px-1 ml-5">
-            <img
-              src="/images/logos/logo.svg"
-              alt="Logo"
-              className="h-8 w-auto mx-auto"
-            />
-          </div>
+    <motion.header
+      className="sticky top-0 z-50 bg-gradient-to-b from-[#0F172A] to-[#1A1A2E] shadow-xl shadow-black/20 backdrop-blur-sm"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      {/* Mobile Header */}
+      <div className="md:hidden flex items-center justify-between py-3 px-4 relative">
+        {/* Logo */}
+        <div className="flex-grow flex justify-center ml-12">
+          <motion.img
+            src="/images/logos/logo.svg"
+            alt="Logo"
+            className="h-8 w-auto"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          />
         </div>
 
-        {/* Desktop Header (original design untouched) */}
-        <div className="hidden md:block box w-full">
-          {
-            <>
-              <TopMenuBar />
-            </>
-          }{" "}
-        </div>
-      </header>
-    </>
+        {/* Burger menu on right */}
+        <motion.div
+          className="absolute right-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <MobileMenu />
+        </motion.div>
+      </div>
+
+      {/* Desktop Header */}
+      <div className="hidden md:block">
+        <TopMenuBar />
+      </div>
+    </motion.header>
   );
 }

@@ -1,9 +1,8 @@
 import autoAnimate from "@formkit/auto-animate";
 import { useEffect, useRef, useState } from "react";
 import { Toaster } from "react-hot-toast";
-import ImageViewer from "~/blocks/common/ImageViewer";
-import GameFilter from "~/blocks/games/GameFilter";
-import GameGrid from "~/blocks/games/GameGrid";
+import GamesFilter from "~/blocks/games/GamesFilter";
+import GamesGrid from "~/blocks/games/GamesGrid";
 import { Helper } from "~/utils/helper";
 import Lang from "../lang/lang";
 import type { Route } from "./+types/Home";
@@ -56,12 +55,12 @@ export default function Games() {
 
   return (
     <>
-      <ImageViewer src="/images/games/banner.png" />
+      {/*  <ImageViewer src="/images/games/banner.png" /> */}
 
       <div className="min-h-screen px-10 box text-white py-10">
         <Toaster position="top-right" />
 
-        <GameFilter
+        <GamesFilter
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           featureFilter={featureFilter}
@@ -74,7 +73,7 @@ export default function Games() {
           sortOption={sortOption}
         />
 
-        <GameGrid
+        <GamesGrid
           games={filteredGames}
           visibleCount={visibleCount}
           loadMore={loadMore}

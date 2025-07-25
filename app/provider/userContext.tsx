@@ -8,12 +8,12 @@ interface User {
   first_name: string;
   last_name: string;
   email: string;
-  address: string;
   photo_id: number;
-  gender: string;
+  address: string;
   hotel_name: string;
   phone_number: string;
   date_of_birth: string;
+  gender: string;
   country: any;
 }
 

@@ -7,7 +7,7 @@ type Props = {
 
 export default function Section({ sections }: Props) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 w-full h-full">
       {sections.map((article: any) => (
         <div
           key={article.id}
@@ -16,7 +16,7 @@ export default function Section({ sections }: Props) {
           <img
             src={article?.photo?.original || "/images/default-article.png"}
             alt={article.title}
-            className="h-40 w-full object-cover"
+            className="h-60 w-full object-cover"
           />
           <div className="p-4 space-y-2">
             <h3 className="text-white text-lg font-semibold truncate">

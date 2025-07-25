@@ -19,7 +19,9 @@ export default [
     route("about", "routes/About.tsx"),
     route("contact", "routes/Contact.tsx"),
     route("games", "routes/Games.tsx"),
-    route("game/1", "blocks/games/Game.tsx"),
+    route("news", "routes/News.tsx"),
+    route("services", "routes/Services.tsx"),
+    route("game/:id", "blocks/games/Game.tsx"),
     route("blogs/:articleId", "blocks/home/Article.tsx"),
   ]),
 

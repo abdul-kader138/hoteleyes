@@ -16,15 +16,21 @@ export default function MobileNavMenu() {
           {helper.navigation.map((item, index) => (
             <div key={index} className="w-full">
               <a
-                onClick={() => toggleDropdown(index)}
-                className="w-full text-left text-white px-4 py-2 rounded-md hover:text-[#d90479] flex items-center justify-between"
+                href={item.href}
+                onClick={() => {
+                  if (openIndex === index) {
+                    setOpenIndex(null);
+                  } else {
+                    setOpenIndex(index);
+                  }
+                }}
+                className="w-full text-left text-white px-4 py-2 rounded-md cursor-pointer hover:text-[#d90479] flex items-center justify-between"
               >
                 <span>{item.name}</span>
               </a>
             </div>
           ))}
         </div>
-
       </div>
     </>
   );

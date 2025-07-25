@@ -71,7 +71,7 @@ export default function Article() {
         {/* Back Button */}
         <button
           className="text-[#D90479] hover:underline flex cursor-pointer items-center"
-          onClick={() => navigate("/school")} // Correct path
+          onClick={() => navigate("/")} // Correct path
         >
           <FaArrowLeft className="mr-2" /> {Lang.go_back_home}
         </button>
