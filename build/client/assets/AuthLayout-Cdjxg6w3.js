@@ -1,0 +1,1 @@
+import{w as e}from"./with-props-DTX1ldRb.js";import{l as t,O as s,S as r,n}from"./chunk-HA7DTUK3-Cn8qSWCH.js";const c=e(function(){return t.jsxs("div",{style:{backgroundImage:"url('/images/bg/bg-pattern.png')"},className:"text-white min-h-screen flex  bg-cover bg-center items-center justify-center",children:[t.jsx(s,{}),t.jsx(r,{}),t.jsx(n,{})]})});export{c as default};
