@@ -61,8 +61,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs">
-              Creating immersive gaming experiences through innovative
-              technology and creative design.
+             Delivering exceptional hotel experiences through meticulous housekeeping, expert maintenance, and thoughtful service design.
             </p>
             <div className="flex gap-4">
               <a
@@ -107,7 +106,7 @@ export default function Footer() {
                   {Lang.home}
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="/games"
                   className="flex items-center text-white/80 hover:text-pink-400 transition group"
@@ -115,7 +114,7 @@ export default function Footer() {
                   <span className="w-2 h-2 bg-pink-500 rounded-full mr-3 group-hover:scale-125 transition-transform"></span>
                   {Lang.games}
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href="/about"
@@ -180,7 +179,7 @@ export default function Footer() {
               {Lang.newsletter}
             </h3>
             <p className="text-white/70 mb-4">
-              Subscribe to get updates on new games and special offers.
+              Subscribe to get updates on new special offers.
             </p>
             <div className="flex">
               <input

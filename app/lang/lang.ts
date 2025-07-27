@@ -1,6 +1,6 @@
 // app scaffolding
 const Lang = {
-  title: "Ororo",
+  title: "HotelEyes",
   search: "Search  ",
   logo: "Logo",
   user: "User",
@@ -16,7 +16,7 @@ const Lang = {
   //home
   CTA_header: "Start Your Journey with Us Today!",
   CTA_content:
-    " Join countless players on thrilling adventures across our universe of games.",
+    "Join countless guests enjoying exceptional comfort, service, and hospitality across our world of welcoming stays.",
   blog_not_found: "Blog not found.",
   blog: "Blog",
   watch_video: "Watch Video:",
@@ -27,18 +27,18 @@ const Lang = {
   see_less: "See Less",
   see_all: "See All",
   open: "OPEN",
-  red_rum: "Golden Of The Year",
+  red_rum: "Reception",
   red_rum_year: "July 29, 2023",
   red_rum_details:
-    "1v1 arcade partygame! On Halloween night, the Reds were transformed into creatures with peculiar powers. Fight until the last second to win the antidote.",
-  eleven_years_ago: "Book Of Fairies",
+    "Welcoming smiles, seamless check-ins, and 24/7 support — our front desk is here to guide, assist, and make your stay effortless from start to finish.",
+  eleven_years_ago: "Maintenance",
   eleven_years_ago_year: "March 18, 2024",
   eleven_years_ago_details:
-    "A letter awakens memories in the young protagonist, which will lead her to relive the events that destroyed her family eleven years earlier.",
-  steel_saviour: "Wonders Of Egypt",
+    "From quick fixes to major repairs, we keep everything running smoothly — ensuring safety, comfort, and reliability for every guest, every moment.",
+  steel_saviour: "House Keeping",
   steel_saviour_date: "November 3, 2024",
   steel_saviour_details:
-    "An old-school shooter set several years after a global war that brought humanity to the brink of extinction due to lack of water.",
+    "We ensure every room is spotless, welcoming, and restful — delivering comfort through cleanliness, so every guest feels right at home.",
 
   // about
   profile_name: "Valli Fragoso",
@@ -49,9 +49,9 @@ const Lang = {
   award_recognition: "Awards & Recognition",
   wwr_moto: "“Innovating Fun, Delivering Excellence.”",
   wwr_content:
-    ", a visionary passionate about gaming and digital innovation. We're a bold new force in the gaming world — crafting immersive experiences designed to entertain, challenge, and inspire players around the globe.",
+    "Our methodology transforms decades of luxury operational insights into a scientific service framework. This systematic approach makes exceptional guest experiences inevitable—not accidental—through perfectly synchronized housekeeping, maintenance, and reception protocols.",
   vision_content:
-    "We aim to be a global leader in interactive entertainment, setting new standards in storytelling, game mechanics, and player engagement. Our future is about pushing creative boundaries — connecting millions through unforgettable experiences that shape the future of play.",
+    "We aim to be the global benchmark in hospitality services, setting new standards in operational precision, guest experience, and integrated facility management. Our future is about redefining service excellence — connecting travelers to seamless stays through anticipatory care that shapes the future of hospitality.",
 
   // games
   search_game: "Search game",
@@ -62,29 +62,29 @@ const Lang = {
   categories: "Categories",
   sort_by: "Sort by",
   see_more: "See more",
-  game_developed: "Games Developed",
+  game_developed: "Happy Customers",
   game_developed_count: "50+",
   support: "Support",
   support_count: "24/7",
 
   //services
-  ouer_service: "Our Game Development Services",
+  ouer_service: "Professional Housekeeping, Maintenance & Reception Services",
   core_service: "Core Services",
   wcu: "Why Choose Us",
   wcu_details:
-    " What sets us apart in the competitive game development landscape",
-  development_process: "Our Development Process",
+    "The measurable advantages that make our hotel services industry-leading",
+  development_process: "Our Working Process",
   development_process_details:
     " A streamlined workflow from initial concept to successful launch",
   core_service_details:
-    "Comprehensive solutions tailored to your game development needs",
+    "Tailored hotel services to elevate every guest experience",
   ouer_service_details:
-    "Crafting immersive gaming experiences from concept to launch and beyond",
+    "Delivering seamless hotel experiences — from check-in to upkeep and every detail in between.",
 
   parter_with_us: "Partner with Us",
   create_something: "Ready to Create Something Amazing?",
   create_something_details:
-    "Partner with us to bring your game vision to life with our expert development services",
+    "Partner with us to transform your hotel operations through precision housekeeping, proactive maintenance, and guest-centric reception services.",
   // contact section
   working_hours: "Working Hours",
   follow_us: "Follow Us",
@@ -126,9 +126,9 @@ const Lang = {
   terms: "Terms of Service",
   cookie: "Cookie Preferences",
   privacy: "Privacy Policy",
-  office_address: "Via dei Luxardo, 33 – Rome, Italy",
-  contact_email: "sales@ororo.games",
-  copyright: "COPYRIGHT© 2025 Ororo, All Rights Reserved",
+  office_address: "Wijde Begijnestraat 1-3, 3512 AW Utrecht, Netherlands",
+  contact_email: "sales@hoteleyes.com",
+  copyright: "COPYRIGHT© 2025 HotelEyes, All Rights Reserved",
 
   // product
   show_more: "Read More",

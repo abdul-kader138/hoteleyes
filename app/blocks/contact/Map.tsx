@@ -43,7 +43,7 @@ export default function Map() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-2xl pointer-events-none" />
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d802.9360058477988!2d12.5990218!3d41.9303844!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f653b7be196f7%3A0x7972c8aa23bac187!2sCommodore%20Industries!5e1!3m2!1sen!2sit!4v1753187154788!5m2!1sen!2sit"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2218.1510550659586!2d5.119289576165273!3d52.0954435675763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c66f45c2d679e3%3A0x25dedc098a5a2bce!2sEye%20Hotel!5e1!3m2!1sen!2sit!4v1753642965517!5m2!1sen!2sit"
               width="100%"
               height="100%"
               loading="lazy"
@@ -51,6 +51,8 @@ export default function Map() {
               style={{ border: 0 }}
               allowFullScreen
             ></iframe>
+
+
           </motion.div>
 
           {/* Contact card with enhanced design */}
@@ -68,7 +70,7 @@ export default function Map() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  Ororo
+                  {Lang.title}
                 </motion.h2>
 
                 <div className="space-y-6">
@@ -91,9 +93,9 @@ export default function Map() {
                         {Lang.address}
                       </h3>
                       <p className="text-gray-300 mt-2">
-                        Via dei Luxardo, 33
+                        Wijde Begijnestraat 1-3,
                         <br />
-                        00156 Roma RM - Italy
+                        3512 AW Utrecht, Netherlands
                       </p>
                     </div>
                   </div>

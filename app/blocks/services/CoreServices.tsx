@@ -44,20 +44,21 @@ export default function CoreServices() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {coreServices.map((service: any, index: any) => (
-            <motion.div
-              key={index}
-              className="bg-gradient-to-br from-[#1A1A2E] via-[#22223B] to-[#1A1A2E] p-8 rounded-2xl border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col"
-              variants={fadeIn}
-              whileHover={{ y: -10 }}
-            >
-              <div className="text-5xl mb-6">{service.icon}</div>
-              <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-              <p className="text-gray-400 flex-grow">{service.description}</p>
-            </motion.div>
-          ))}
-        </div>
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {coreServices.map((service: any, index: any) => (
+    <motion.div
+      key={index}
+      className="bg-gradient-to-br from-[#1A1A2E] via-[#22223B] to-[#1A1A2E] p-8 rounded-2xl border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col"
+      variants={fadeIn}
+      whileHover={{ y: -10 }}
+    >
+      <div className="text-5xl mb-6">{service.icon}</div>
+      <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+      <p className="text-gray-400 flex-grow text-justify">{service.description}</p>
+    </motion.div>
+  ))}
+</div>
+
       </motion.div>
     </>
   );

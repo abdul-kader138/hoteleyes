@@ -48,7 +48,7 @@ export class Helper {
       href: "/contact",
       current: false,
     },
-   /*  { name: Lang.games, href: "/games", current: false }, */
+    { name: Lang.games, href: "/games", current: false },
     { name: Lang.news, href: "/news", current: false },
   ];
 
@@ -318,24 +318,25 @@ export class Helper {
 
   slidesVertical = [
     {
-      image: "/images/slider/slider4.png",
+      title: Lang.participate_beta,
+      image: "/images/slider/beta-test.png",
       bgcolor: "#E62928",
     },
     {
-      image: "/images/slider/slider5.png",
+      image: "/images/slider/new-title.png",
       bgcolor: "#E5632F",
     },
     {
-      image: "/images/slider/slider5.png",
+      image: "/images/slider/countdown.png",
       bgcolor: "#D4C52F",
     },
     {
-      image: "/images/slider/slider6.png",
-      bgcolor: "#D4C52F",
+      image: "/images/slider/discord.png",
+      bgcolor: "#52A04D",
     },
     {
-      image: "/images/slider/slider7.png",
-      bgcolor: "#D4C52F",
+      image: "/images/slider/update.png",
+      bgcolor: "#3B98BC",
     },
   ];
 
@@ -345,21 +346,21 @@ export class Helper {
       title: Lang.steel_saviour,
       date: Lang.steel_saviour_date,
       description: Lang.steel_saviour_details,
-      image: "/images/products/other-section/housekeeping.png",
+      image: "/images/products/other-section/wonder.png",
     },
     {
       id: 2,
       title: Lang.eleven_years_ago,
       date: Lang.eleven_years_ago_year,
       description: Lang.eleven_years_ago_details,
-      image: "/images/products/other-section/maintainence.png",
+      image: "/images/products/other-section/book.png",
     },
     {
       id: 3,
       title: Lang.red_rum,
       date: Lang.red_rum_year,
       description: Lang.red_rum_details,
-      image: "/images/products/other-section/reception.png",
+      image: "/images/products/other-section/golden.png",
     },
   ];
 
@@ -1084,69 +1085,76 @@ export class Helper {
 
   coreServices = [
     {
-      title: "Housekeeping",
+      title: "Game Design & Development",
       description:
-        "Assign staff to meticulously clean rooms: make beds, sanitize bathrooms, and restock minibars. Complete minigames for vacuum trails or linen folding to earn sparkling cleanliness ratings and guest satisfaction boosts.",
+        "Full-cycle game development from concept to launch with innovative mechanics and engaging gameplay",
       icon: "🎮",
     },
     {
-      title: "Maintenance",
+      title: "2D/3D Animation",
       description:
-        "Dispatch engineers to fix leaks, electrical faults, and broken furniture. Race against time in pipe-repair minigames or wiring puzzles to avert disasters, minimize downtime, and protect hotel revenue.",
+        "High-quality character and environment animations that bring your game world to life",
       icon: "🖌️",
     },
     {
-      title: "Reception",
+      title: "Mobile & PC Game Development",
       description:
-        "Manage check-ins, check-outs and guest requests. Complete minigames for efficient queue handling and issue resolution to boost satisfaction, earn tips, and ensure smooth hotel operations.",
+        "Cross-platform development for all major platforms with optimized performance",
       icon: "📱",
+    },
+    {
+      title: "Promotional Tools & Game Solutions",
+      description:
+        "Marketing tools, analytics dashboards, and player engagement solutions",
+      icon: "📊",
     },
   ];
 
- processSteps = [
-  {
-    step: 1,
-    title: "Service Definition",
-    description: "Establishing standards for room cleaning protocols, maintenance response SLAs, and reception workflows"
-  },
-  {
-    step: 2,
-    title: "Operational Design",
-    description: "Creating staff duty matrices, equipment layouts, and service interaction blueprints"
-  },
-  {
-    step: 3,
-    title: "Implementation",
-    description: "Training teams, deploying cleaning systems, and activating maintenance response networks"
-  },
-  {
-    step: 4,
-    title: "Service Launch",
-    description: "Quality verification through room inspections, emergency drills, and front-desk simulations"
-  },
-  {
-    step: 5,
-    title: "Continuous Optimization",
-    description: "Staff retraining, equipment maintenance, and guest feedback integration"
-  }
-];
+  processSteps = [
+    {
+      step: 1,
+      title: "Concept",
+      description: "Brainstorming ideas and creating the initial game concept",
+    },
+    {
+      step: 2,
+      title: "Design",
+      description: "Creating game mechanics, characters, and world design",
+    },
+    {
+      step: 3,
+      title: "Development",
+      description: "Coding, asset creation, and system implementation",
+    },
+    {
+      step: 4,
+      title: "Launch",
+      description: "Quality assurance and market deployment",
+    },
+    {
+      step: 5,
+      title: "Support",
+      description: "Post-launch updates, maintenance, and community support",
+    },
+  ];
 
-differentiators = [
-  {
-    title: "Service Innovation",
-    description: "Proactive cleaning protocols, predictive maintenance systems, and streamlined check-in/out workflows that exceed industry standards"
-  },
-  {
-    title: "Hospitality Technology",
-    description: "Smart equipment for deep cleaning, IoT-enabled maintenance diagnostics, and cloud-based reception management systems"
-  },
-  {
-    title: "Guest-Centric Philosophy",
-    description: "Trained staff anticipating needs with personalized room preparations and responsive service recovery solutions"
-  },
-  {
-    title: "Proven Operational Excellence",
-    description: "Consistent 95%+ guest satisfaction scores and industry-leading 15-minute emergency response guarantees"
-  }
-];
+  differentiators = [
+    {
+      title: "Innovative Mechanics",
+      description: "Unique gameplay systems that keep players engaged",
+    },
+    {
+      title: "Cutting-Edge Tech",
+      description:
+        "Utilizing latest engines and technologies for superior performance",
+    },
+    {
+      title: "Player-First Approach",
+      description: "Design focused on player experience and retention",
+    },
+    {
+      title: "Proven Track Record",
+      description: "Successful launches across multiple genres and platforms",
+    },
+  ];
 }

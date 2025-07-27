@@ -67,7 +67,7 @@ export default function WhoWeAre() {
                   custom={1}
                   className="text-lg text-gray-300 leading-relaxed mb-6"
                 >
-                  {Lang.founded_by + " "}
+                 {/*  {Lang.founded_by + " "}
                   <a
                     href={Lang.linkedin_profile}
                     target="_blank"
@@ -89,7 +89,7 @@ export default function WhoWeAre() {
                         d="M14 5l7 7m0 0l-7 7m7-7H3"
                       />
                     </svg>
-                  </a>
+                  </a> */}
                   {Lang.wwr_content}
                 </motion.p>
 
@@ -111,7 +111,7 @@ export default function WhoWeAre() {
                   custom={3}
                 >
                   {[
-                    { value: "50+", label: "Games Developed" },
+                    { value: "50+", label: "Happy Customer" },
                     /* { value: "100K+", label: "Active Players" }, */
                     { value: "20+", label: "Team Members" },
                     { value: "10+", label: "Years Experience" },

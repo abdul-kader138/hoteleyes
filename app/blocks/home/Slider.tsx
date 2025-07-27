@@ -34,7 +34,7 @@ const buttonVariants = {
 export default function Slider() {
   const [current, setCurrent] = useState(0);
   const [typedText, setTypedText] = useState("");
-  const fullText = "Building Adventures, One Game at a Time.";
+  const fullText = "From Repairs to Cleanliness — We Maintain, You Simply Relax.";
   const slideInterval = useRef<any>(null);
   const [showCursor, setShowCursor] = useState(true);
 
