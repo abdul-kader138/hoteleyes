@@ -15,6 +15,7 @@ interface User {
   date_of_birth: string;
   gender: string;
   country: any;
+  role_id: any;
 }
 
 interface UserContextType {

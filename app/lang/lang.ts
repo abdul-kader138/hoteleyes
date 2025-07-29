@@ -247,7 +247,7 @@ const Lang = {
 
   country: "Country",
   phone: "Phone",
-  dob: "Date Of Birth",
+  dob: "DOB",
   invalid_phone_number: "Invalid phone number",
   select_country_first: "Select country first",
   country_required: "Country is required for phone validation",
@@ -259,12 +259,13 @@ const Lang = {
 
   // user list
 
-  user_list_description:"Manage and view all system users",
-  search_placeholder:"Search users...",
-  total_user:"Total Users",
-  active_today:"Active Today",
-  gender:"Gender",
-  hotel_name:"Hotel Name",
+  user_list_description: "Manage and view all system users",
+  search_placeholder: "Search users...",
+  total_user: "Total Users",
+  active_today: "Active Today",
+  gender: "Gender",
+  hotel_name: "Hotel Name",
+  date_of_birth: "DOB",
 };
 
 export default Lang;

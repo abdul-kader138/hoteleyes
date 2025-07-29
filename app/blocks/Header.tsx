@@ -6,7 +6,7 @@ import MobileMenu from "./mobile-menu/MobileMenu";
 export function Header() {
   return (
     <motion.header
-      className="sticky top-0 z-50 bg-gradient-to-b from-[#0F172A] to-[#1A1A2E] shadow-xl shadow-black/20 backdrop-blur-sm"
+      className="sticky top-0 z-50 bg-gradient-to-b from-[#0F172A] to-[#1A1A2E] border-white/10"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
