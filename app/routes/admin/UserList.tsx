@@ -369,7 +369,7 @@ export default function UserList() {
                 onChange={(e) => setSearchText(e.target.value)}
               />
             </div>
-            <button className="px-4 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-400 hover:to-pink-400  cursor-pointertransition-all flex items-center">
+            <button className="px-4 py-3 sm:px-1 sm:py-1 rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-400 hover:to-pink-400  cursor-pointertransition-all sm:text-sm flex items-center">
               <FaPlus className="mr-2" />
               Add User
             </button>
@@ -535,7 +535,7 @@ export default function UserList() {
         )}
 
         {/* Data Table */}
-        <div className="bg-gradient-to-br min-h-screen from-gray-800 to-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 overflow-hidden shadow-xl">
+        <div className="bg-gradient-to-br from-gray-800 to-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 overflow-hidden shadow-xl">
           <div className="px-6 py-4 flex justify-between items-center border-b border-gray-700">
             <h3 className="text-lg font-semibold">User Management</h3>
             <div className="flex gap-3">

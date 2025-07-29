@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { Helper } from "~/utils/helper";
 
@@ -10,28 +11,39 @@ export default function MobileNavMenu() {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
-    <>
-      <div className="w-full space-y-4 mt-0">
-        <div className="w-full space-y-2 mt-6">
-          {helper.navigation.map((item, index) => (
-            <div key={index} className="w-full">
-              <a
-                href={item.href}
-                onClick={() => {
-                  if (openIndex === index) {
-                    setOpenIndex(null);
-                  } else {
-                    setOpenIndex(index);
-                  }
-                }}
-                className="w-full text-left text-white px-4 py-2 rounded-md cursor-pointer hover:text-[#d90479] flex items-center justify-between"
-              >
-                <span>{item.name}</span>
-              </a>
+    <div className="space-y-1">
+      {helper.navigation.map((item: any, index) => (
+        <div key={index} className="group">
+          <a
+            href={item.href}
+            onClick={() => toggleDropdown(index)}
+            className="flex items-center w-full p-4 rounded-xl text-white hover:bg-slate-800 transition-colors group-[.active]:bg-slate-800"
+          >
+            <span className="flex-1 text-lg font-medium">{item.name}</span>
+            {item.children && (
+              <ChevronDownIcon
+                className={`h-5 w-5 transition-transform ${
+                  openIndex === index ? "rotate-180" : ""
+                }`}
+              />
+            )}
+          </a>
+
+          {item.children && openIndex === index && (
+            <div className="pl-6 mt-1 space-y-2">
+              {item.children.map((child: any, childIndex: any) => (
+                <a
+                  key={childIndex}
+                  href={child.href}
+                  className="block py-3 px-4 text-indigo-200 rounded-lg hover:bg-slate-800 hover:text-white transition-colors"
+                >
+                  {child.name}
+                </a>
+              ))}
             </div>
-          ))}
+          )}
         </div>
-      </div>
-    </>
+      ))}
+    </div>
   );
 }

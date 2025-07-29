@@ -187,7 +187,7 @@ export default function TopMenuBar() {
           ) : (
             <button
               onClick={() => helper.handleClickRedirect("/login")}
-              className="relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#d90479] to-[#8a2387] text-white font-medium shadow-lg hover:shadow-xl transition-all cursor-pointer duration-300 hover:scale-[1.03] group"
+              className="relative px-5 py-1 rounded-lg bg-gradient-to-r from-[#d90479] to-[#8a2387] text-white font-medium shadow-lg hover:shadow-xl transition-all cursor-pointer duration-300 hover:scale-[1.03] group"
             >
               {Lang.login}
               <span className="absolute inset-x-0 bottom-0 h-0.5 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
