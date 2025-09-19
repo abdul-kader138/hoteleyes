@@ -48,7 +48,7 @@ export class Helper {
       href: "/contact",
       current: false,
     },
-   /*  { name: Lang.games, href: "/games", current: false }, */
+    /*  { name: Lang.games, href: "/games", current: false }, */
     { name: Lang.news, href: "/news", current: false },
   ];
 
@@ -849,31 +849,31 @@ export class Helper {
 
   team = [
     {
-      name: "LUIGI SIMONETTI",
+      name: "MR. AAA",
       title: "SAMPLE DESIGNATION",
       image: "/images/male.png",
       bio: "Storyteller and design lead, passionate about immersive worlds.",
     },
     {
-      name: "VALLI FRAGOSO",
+      name: "MR. BBB",
       title: "SAMPLE DESIGNATION",
       image: "/images/male.png",
       bio: "Visionary entrepreneur leading innovation in the gaming space.",
     },
     {
-      name: "STEFANO CIANFARELLI",
+      name: "MR. CCC",
       title: "SAMPLE DESIGNATION",
       image: "/images/male.png",
       bio: "Tech wizard behind our smooth gameplay and architecture.",
     },
     {
-      name: "FRANCESCO COLANGELI",
+      name: "MR. DDD",
       title: "SAMPLE DESIGNATION",
       image: "/images/male.png",
       bio: "Creative coder blending logic with imagination.",
     },
     {
-      name: "GIOVANNI CELAURO",
+      name: "MR. EEE",
       title: "SAMPLE DESIGNATION",
       image: "/images/male.png",
       bio: "Pixel perfectionist, building worlds that feel alive.",
@@ -1103,50 +1103,59 @@ export class Helper {
     },
   ];
 
- processSteps = [
-  {
-    step: 1,
-    title: "Service Definition",
-    description: "Establishing standards for room cleaning protocols, maintenance response SLAs, and reception workflows"
-  },
-  {
-    step: 2,
-    title: "Operational Design",
-    description: "Creating staff duty matrices, equipment layouts, and service interaction blueprints"
-  },
-  {
-    step: 3,
-    title: "Implementation",
-    description: "Training teams, deploying cleaning systems, and activating maintenance response networks"
-  },
-  {
-    step: 4,
-    title: "Service Launch",
-    description: "Quality verification through room inspections, emergency drills, and front-desk simulations"
-  },
-  {
-    step: 5,
-    title: "Continuous Optimization",
-    description: "Staff retraining, equipment maintenance, and guest feedback integration"
-  }
-];
+  processSteps = [
+    {
+      step: 1,
+      title: "Service Definition",
+      description:
+        "Establishing standards for room cleaning protocols, maintenance response SLAs, and reception workflows",
+    },
+    {
+      step: 2,
+      title: "Operational Design",
+      description:
+        "Creating staff duty matrices, equipment layouts, and service interaction blueprints",
+    },
+    {
+      step: 3,
+      title: "Implementation",
+      description:
+        "Training teams, deploying cleaning systems, and activating maintenance response networks",
+    },
+    {
+      step: 4,
+      title: "Service Launch",
+      description:
+        "Quality verification through room inspections, emergency drills, and front-desk simulations",
+    },
+    {
+      step: 5,
+      title: "Continuous Optimization",
+      description:
+        "Staff retraining, equipment maintenance, and guest feedback integration",
+    },
+  ];
 
-differentiators = [
-  {
-    title: "Service Innovation",
-    description: "Proactive cleaning protocols, predictive maintenance systems, and streamlined check-in/out workflows that exceed industry standards"
-  },
-  {
-    title: "Hospitality Technology",
-    description: "Smart equipment for deep cleaning, IoT-enabled maintenance diagnostics, and cloud-based reception management systems"
-  },
-  {
-    title: "Guest-Centric Philosophy",
-    description: "Trained staff anticipating needs with personalized room preparations and responsive service recovery solutions"
-  },
-  {
-    title: "Proven Operational Excellence",
-    description: "Consistent 95%+ guest satisfaction scores and industry-leading 15-minute emergency response guarantees"
-  }
-];
+  differentiators = [
+    {
+      title: "Service Innovation",
+      description:
+        "Proactive cleaning protocols, predictive maintenance systems, and streamlined check-in/out workflows that exceed industry standards",
+    },
+    {
+      title: "Hospitality Technology",
+      description:
+        "Smart equipment for deep cleaning, IoT-enabled maintenance diagnostics, and cloud-based reception management systems",
+    },
+    {
+      title: "Guest-Centric Philosophy",
+      description:
+        "Trained staff anticipating needs with personalized room preparations and responsive service recovery solutions",
+    },
+    {
+      title: "Proven Operational Excellence",
+      description:
+        "Consistent 95%+ guest satisfaction scores and industry-leading 15-minute emergency response guarantees",
+    },
+  ];
 }
