@@ -23,7 +23,7 @@ const Lang = {
   published: "Published",
   summary: "Summary",
   invalid_video: "Invalid Video",
-  feature_games: "Featured Games",
+  feature_games: "Featured Services",
   see_less: "See Less",
   see_all: "See All",
   open: "OPEN",
