@@ -1,5 +1,5 @@
 import { Listbox } from "@headlessui/react";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import ChevronUpDownIcon  from "@heroicons/react/20/solid/ChevronUpDownIcon";
 import Lang from "~/lang/lang";
 import { Helper } from "~/utils/helper";
 

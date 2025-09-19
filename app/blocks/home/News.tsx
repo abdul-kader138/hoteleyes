@@ -1,4 +1,6 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import ArrowRightIcon from "@heroicons/react/24/outline/ArrowRightIcon";
+
+import ArrowLeftIcon from "@heroicons/react/24/outline/ArrowLeftIcon";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaBlogger } from "react-icons/fa";

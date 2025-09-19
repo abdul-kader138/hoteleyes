@@ -4,7 +4,7 @@ import {
   DisclosurePanel,
   Transition,
 } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
 import { IoIosMenu } from "react-icons/io";
 import Lang from "~/lang/lang";
 import MobileNavMenu from "./MobileNavMenu";
